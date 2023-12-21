@@ -8,7 +8,8 @@ router.get('/', function(req, res) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('medicos', { medicos: data }); // Render 'index' view with 'medicos' data
+        //res.send(data);
     });
 });
 
