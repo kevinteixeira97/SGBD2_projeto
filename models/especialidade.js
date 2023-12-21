@@ -2,12 +2,6 @@ var mongoose = require("mongoose"),
     Schema = mongoose.Schema,
     objectId = mongoose.Schema.ObjectId;
 
-
-
-
-
-
-
 /*
 var pessoaSchema = new Schema({
     _id: { type: objectId, auto:true },
