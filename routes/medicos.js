@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
         //res.send(data);
     });
 });
-
+//comentario aqui
 
 router.get('/:id_medico', function(req, res) {
     var id_medico = req.params.id_medico; // Usando id_medico como parâmetro
