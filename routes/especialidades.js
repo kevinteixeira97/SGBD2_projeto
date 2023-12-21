@@ -1,9 +1,9 @@
 var express = require('express'),
     router = express.Router(),
-    medico = require('../models/medico.js');
+    especialidade = require('../models/especialidade.js');
 
 router.get('/', function(req, res) {
-    medico.find({}, function (err, data) {
+    especialidade.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
     var id = req.params.id;
-    medico.findById(id, function (err, data) {
+    especialidade.findById(id, function (err, data) {
         if (err) {
             res.send("error");
             return;
@@ -26,7 +26,7 @@ router.get('/:id', function(req, res) {
 
 router.post("/", function(req, res) {
     var obj = req.body;
-    var model = new medico(obj);
+    var model = new especialidade(obj);
     model.save(function(err) {
         if (err) {
             res.send("error");
@@ -41,7 +41,7 @@ router.post("/:id", function(req, res) {
     var id = req.params.id;
     var obj = req.body;
 
-    medico.findByIdAndUpdate(id, obj, function(err) {
+    especialidade.findByIdAndUpdate(id, obj, function(err) {
         if (err) {
             res.send("error");
             return;
@@ -54,7 +54,7 @@ router.post("/:id", function(req, res) {
 router.delete("/:id", function(req, res) {
     var id = req.params.id;
 
-    medico.findByIdAndRemove(id, function(err, data) {
+    especialidade.findByIdAndRemove(id, function(err, data) {
         if (err) {
             res.send("error");
             return;

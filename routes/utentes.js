@@ -1,9 +1,9 @@
 var express = require('express'),
     router = express.Router(),
-    medico = require('../models/medico.js');
+    utente = require('../models/utente.js');
 
 router.get('/', function(req, res) {
-    medico.find({}, function (err, data) {
+    utente.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
@@ -14,7 +14,7 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
     var id = req.params.id;
-    medico.findById(id, function (err, data) {
+    utente.findById(id, function (err, data) {
         if (err) {
             res.send("error");
             return;
@@ -26,7 +26,7 @@ router.get('/:id', function(req, res) {
 
 router.post("/", function(req, res) {
     var obj = req.body;
-    var model = new medico(obj);
+    var model = new utente(obj);
     model.save(function(err) {
         if (err) {
             res.send("error");
@@ -41,7 +41,7 @@ router.post("/:id", function(req, res) {
     var id = req.params.id;
     var obj = req.body;
 
-    medico.findByIdAndUpdate(id, obj, function(err) {
+    utente.findByIdAndUpdate(id, obj, function(err) {
         if (err) {
             res.send("error");
             return;
@@ -54,7 +54,7 @@ router.post("/:id", function(req, res) {
 router.delete("/:id", function(req, res) {
     var id = req.params.id;
 
-    medico.findByIdAndRemove(id, function(err, data) {
+    utente.findByIdAndRemove(id, function(err, data) {
         if (err) {
             res.send("error");
             return;
