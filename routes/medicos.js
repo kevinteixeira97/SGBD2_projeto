@@ -13,6 +13,7 @@ router.get('/', function(req, res) {
     });
 });
 
+
 router.get('/:id_medico', function(req, res) {
     var id_medico = req.params.id_medico; // Usando id_medico como parâmetro
     medico.findOne({ id_medico: id_medico }, function (err, data) {
