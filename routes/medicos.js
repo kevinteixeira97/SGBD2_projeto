@@ -13,9 +13,9 @@ router.get('/', function(req, res) {
     });
 });
 
-router.get('/:id', function(req, res) {
-    var id = req.params.id;
-    medico.findById(id, function (err, data) {
+router.get('/:id_medico', function(req, res) {
+    var id_medico = req.params.id_medico; // Usando id_medico como parâmetro
+    medico.findOne({ id_medico: id_medico }, function (err, data) {
         if (err) {
             res.send("error");
             return;

@@ -13,7 +13,7 @@ var pessoaSchema = new Schema({
 */
 
 var medicoSchema = new Schema({
-    _id: { type: objectId, auto: true },
+    _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     id_medico: { type: Number, required: true },
     nome: { type: String, required: true},
     apelido: { type: String, required: true},
@@ -22,7 +22,7 @@ var medicoSchema = new Schema({
     localidade: { type: String, required: true},
     email: { type: String, required: true},
     especialidade_id: { type: Number, required: true}
-}, { versionKey: false})
+}, { versionKey: false});
 
 
 
