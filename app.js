@@ -10,6 +10,11 @@ var connection = require("./config/db"); //mongodb connection
 var medicosRouter = require('./routes/medicos');
 var utentesRouter = require('./routes/utentes');
 var especialidadesRouter = require('./routes/especialidades');
+var readRouter = require('./routes/read');
+var createRouter = require('./routes/create');
+var updateRouter = require('./routes/update');
+var deleteRouter = require('./routes/delete');
+
 
 var app = express();
 
@@ -23,10 +28,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/pessoas', pessoasRouter);
 app.use('/medicos', medicosRouter);
 app.use('/utentes', utentesRouter);
 app.use('/especialidades', especialidadesRouter);
+app.use('/read', readRouter);
+app.use('/create', createRouter);
+app.use('/update', updateRouter);
+app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
