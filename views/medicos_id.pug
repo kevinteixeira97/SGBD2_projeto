@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        title Detalhes do Médico
+    body
+        h1 Detalhes do Médico
+        h2= medico.nome + ' ' + medico.apelido
+        p ID: #{medico._id}
+        p Medico ID: #{medico.id_medico}
+        p Age: #{medico.idade}
+        p Sex: #{medico.sexo}
+        p Location: #{medico.localidade}
+        p Email: #{medico.email}
+        p Specialty ID: #{medico.especialidade_id}

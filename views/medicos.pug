@@ -5,7 +5,8 @@ html
     body
         h1 All Medicos
         each medico in medicos
-            h2= medico.nome + ' ' + medico.apelido
+            h2
+                a(href='/medicos/' + medico.id_medico) #{medico.nome} #{medico.apelido}
             p ID: #{medico._id}
             p Medico ID: #{medico.id_medico}
             p Age: #{medico.idade}

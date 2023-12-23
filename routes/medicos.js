@@ -12,8 +12,7 @@ router.get('/', function(req, res) {
         //res.send(data);
     });
 });
-//comentario aqui
-//outro comentario
+
 
 router.get('/:id_medico', function(req, res) {
     var id_medico = req.params.id_medico; // Usando id_medico como parâmetro
@@ -22,9 +21,10 @@ router.get('/:id_medico', function(req, res) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('medicos_id', { medico: data }); // Renderiza a pagina 'medicos_id' view com os dados do médico selecionado
     });
 });
+
 
 
 router.post("/", function(req, res) {
