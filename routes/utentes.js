@@ -3,6 +3,19 @@ var express = require('express'),
     utente = require('../models/utente.js');
 
 
+router.get('/create', function(req, res) {
+
+    res.render('utentes_create'); // Render 'index' view with 'medicos' data
+
+});
+
+router.get('/update', function(req, res) {
+
+    res.render('utentes_update'); // Render 'index' view with 'medicos' data
+
+});
+
+
 router.get('/', function(req, res) {
     utente.find({}, function (err, data) {
         if (err) {
@@ -13,6 +26,13 @@ router.get('/', function(req, res) {
         //res.send(data);
     });
 });
+
+
+
+
+
+
+
 
 router.get('/:id_utente', function(req, res) {
     var id_utente = req.params.id_utente;
@@ -40,11 +60,11 @@ router.post("/", function(req, res) {
 })
 
 
-router.post("/:id", function(req, res) {
-    var id = req.params.id;
+router.post("/:id_utente", function(req, res) {
+    var id_utente = req.params.id_utente;
     var obj = req.body;
 
-    utente.findByIdAndUpdate(id, obj, function(err) {
+    utente.findOneAndUpdate({id_utente:id_utente}, obj, function(err) {
         if (err) {
             res.send("error");
             return;

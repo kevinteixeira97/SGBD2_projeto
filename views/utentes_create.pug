@@ -3,12 +3,12 @@ html
     head
         title Create
     body
-        h1 Crie um novo Médico
-        form(method='POST', action='/medicos')
-            label(for='id_medico') ID Médico:
-            input#id_medico(type='number', name='id_medico', required)
-            if !id_medico
-                p ID Médico is required.
+        h1 Crie um novo Utente
+        form(method='POST', action='/utentes')
+            label(for='id_utente') ID Utente:
+            input#id_utente(type='number', name='id_utente', required)
+            if !id_utente
+                p ID Utente is required.
 
             label(for='nome') Nome:
             input#nome(type='text', name='nome', required)
@@ -40,9 +40,9 @@ html
             if !email
                 p Email is required.
 
-            label(for='especialidade_id') Especialidade ID:
-            input#especialidade_id(type='number', name='especialidade_id', required)
-            if !especialidade_id
-                p Especialidade ID is required.
+            label(for='numsaude') Numsaude:
+            input#numsaude(type='number', name='numsaude', required)
+            if !numsaude
+                p Numsaude is required.
 
             input(type='submit', value='Submit')
