@@ -15,11 +15,16 @@ var pessoaSchema = new Schema({
 }, { versionKey: false})
 */
 
-var especialidadeSchema = new Schema({
-    _id: { type: objectId, auto: true },
-    id_especialidade: { type: Number, required: true },
-    nome: { type: [String], required: true }
-}, { versionKey: false})
+const especialidadeSchema = new Schema({
+    especialidades: [{
+        _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+        id_especialidade: { type: Number, required: true },
+        nome: { type: String, required: true },
+        descricao: { type: String, required: true }
+    }]
+}, { versionKey: false });
+
+
 
 
 

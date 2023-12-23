@@ -22,6 +22,7 @@ router.get('/:id_medico', function(req, res) {
             return;
         }
         res.render('medicos_id', { medico: data }); // Renderiza a pagina 'medicos_id' view com os dados do médico selecionado
+        //res.send(data);
     });
 });
 

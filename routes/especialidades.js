@@ -2,13 +2,15 @@ var express = require('express'),
     router = express.Router(),
     especialidade = require('../models/especialidade.js');
 
+
 router.get('/', function(req, res) {
     especialidade.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('especialidades', { especialidades: data }); // Render 'index' view with 'especialidades' data
+        //res.send(data);
     });
 });
 

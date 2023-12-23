@@ -1,0 +1,18 @@
+//precisa de correção sobre os ids da coleção
+doctype html
+html
+    head
+        title All Especialidades
+    body
+        h1 All Especialidades
+        pre= JSON.stringify(especialidades, null, 2)
+        each especialidadeDoc in especialidades
+            each especialidade in especialidadeDoc.especialidades
+                h2
+                    a(href=`/especialidades/${especialidade.id}`) #{especialidade.nome}
+                p ID: #{especialidade._id}
+                p Especialidade ID: #{especialidade.id}
+                p Description: #{especialidade.descricao}
+                hr
+
+
