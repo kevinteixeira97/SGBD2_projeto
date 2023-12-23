@@ -2,24 +2,27 @@ var express = require('express'),
     router = express.Router(),
     utente = require('../models/utente.js');
 
+
 router.get('/', function(req, res) {
     utente.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('utentes', { utentes: data }); // Render 'index' view with 'utentes' data
+        //res.send(data);
     });
 });
 
-router.get('/:id', function(req, res) {
-    var id = req.params.id;
-    utente.findById(id, function (err, data) {
+router.get('/:id_utente', function(req, res) {
+    var id_utente = req.params.id_utente;
+    utente.findOne({ id_utente: id_utente }, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('utentes_id', { utente: data }); // Renderiza a pagina 'utentes_id' view com os dados do utente selecionado
+        //res.send(data);
     });
 });
 
