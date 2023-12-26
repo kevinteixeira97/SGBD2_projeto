@@ -17,14 +17,19 @@ router.get('/', function(req, res) {
                     console.log("error");
                     return;
                 }
-                var especialidade = data.especialidades.find(e => e.id_especialidade === medico.especialidade_id);
-                medico.especialidade_descricao = especialidade.descricao;
-                medico.especialidade_nome = especialidade.nome;
+                if (data) {
+                    var especialidade = data.especialidades.find(e => e.id_especialidade === medico.especialidade_id);
+                    medico.especialidade_descricao = especialidade.descricao;
+                    medico.especialidade_nome = especialidade.nome;
+                } else {
+                    console.log(`No especialidade found with id_especialidade: ${medico.especialidade_id}`);
+                }
             });
         }
         res.render('crudMedicosRead', { medicos: medicos }); // Pass 'medicos' data to the 'medicos' view
     });
 });
+
 
 router.get('/:id_medico', function(req, res) {
     var id_medico = req.params.id_medico; // Using id_medico as parameter
@@ -62,7 +67,7 @@ router.get('/:id_medico', function(req, res) {
 router.get('/create', function(req, res) {
 
     res.render('crudMedicosCreate'); // Render 'index' view with 'medicos' data
-
+    console.log
 });
 
 router.get('/update', function(req, res) {
