@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Detalhes do Médico
+        body
+            h1 Detalhes do Médico
+            h2= utente.nome + ' ' + utente.apelido
+            p ID: #{utente._id}
+            p Utente ID: #{utente.id_utente}
+            p Age: #{utente.idade}
+            p Sex: #{utente.sexo}
+            p Location: #{utente.localidade}
+            p Email: #{utente.email}
+            p Health ID: #{utente.especialidade_id}

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Delete
+            a(href="/create")
+                h1.titulo_inicial Apagar Dados / Apagar Médico
+
+
+        body
+            h1 Médico
+            form(method='POST', action='/medicos/delete')
+                label(for='id_medico') Médico:
+
+                select#id_medico(name='id_medico', required)
+                    each medico in medicos
+                        option(value=medico.id_medico) Nome: #{medico.nome}; Apelido: #{medico.apelido}; Idade: #{medico.idade}; Sexo: #{medico.sexo}; Localidade: #{medico.localidade}; Email: #{medico.email}; Especialidade: #{medico.especialidade_id};
+
+
+                br
+                input(type='submit', value='Delete')

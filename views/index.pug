@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  doctype html
+  html
+    head
+      title read
+      h1.titulo_inicial Página Inicial
+    body
+      a(href="/read")
+        h1 Consultar dados
+      a(href="/create")
+        h1 Criar dados
+      a(href="/update")
+        h1 Modificar dados
+      a(href="/delete")
+        h1 Apagar dados

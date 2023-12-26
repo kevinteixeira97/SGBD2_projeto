@@ -4,7 +4,7 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-    res.render('read'); // Render 'index' view with 'medicos' data
+    res.render('crudViewRead'); // Render 'index' view with 'medicos' data
 
 });
 

@@ -1,0 +1,61 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Update
+            a(href="/update")
+                h1.titulo_inicial Modificar Dados / Modificar Médico
+
+        body
+            h1 Atualize um Médico
+            form(method='POST', action='/medicos/update')
+                label(for='id_medico') Médico:
+
+                select#id_medico(name='id_medico', required)
+                    each medico in medicos
+                        option(value=medico.id_medico) Nome: #{medico.nome}; Apelido: #{medico.apelido}; Idade: #{medico.idade}; Sexo: #{medico.sexo}; Localidade: #{medico.localidade}; Email: #{medico.email}; Especialidade: #{medico.especialidade_id};
+
+
+                br
+
+
+                label(for='nome') Nome:
+                input#nome(type='text', name='nome', value=nome, required)
+
+
+                br
+
+                label(for='apelido') Apelido:
+                input#apelido(type='text', name='apelido', value=apelido, required)
+
+
+                br
+                label(for='idade') Idade:
+                input#idade(type='number', name='idade', value=idade, required)
+
+                br
+
+                label(for='sexo') Sexo:
+                input#sexo(type='text', name='sexo', value=sexo, required)
+
+                br
+
+                label(for='localidade') Localidade:
+                input#localidade(type='text', name='localidade', value=localidade, required)
+
+
+                br
+                label(for='email') Email:
+                input#email(type='email', name='email', value=email, required)
+
+
+                br
+                label(for='especialidade_id') Especialidade ID:
+                input#especialidade_id(type='number', name='especialidade_id', value=especialidade_id, required)
+
+                br
+
+                input(type='submit', value='Submit')

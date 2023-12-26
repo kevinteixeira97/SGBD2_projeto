@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    doctype html
+    html
+        head
+            title All Medicos
+            a(href="/read")
+                h1.titulo_inicial Consultar Dados / Consultar Médicos
+        body
+            h1 Detalhes dos Médicos
+            h2= 'Médico: ' + medico.nome
+            p Médico ID: #{medico.id_medico}
+            p Nome: #{medico.nome}
+            p Apelido: #{medico.apelido}
+            p Idade: #{medico.idade}
+            p Sexo: #{medico.sexo}
+            p Localidade: #{medico.localidade}
+            p Email: #{medico.email}
+            p Especialidade: #{medico.especialidade_nome}
+            p Descrição de Especialidade: #{medico.especialidade_descricao}
+

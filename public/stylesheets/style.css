@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+
+h1.big-green {
+  font-size: 5rem; /* Adjust size as needed */
+  color: green;
+}
+
+h1.titulo_inicial{
+  font-size: 4rem;
+  color: mediumseagreen;
+}

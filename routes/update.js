@@ -4,7 +4,7 @@ var express = require('express'),
 
 router.get('/', function(req, res) {
 
-    res.render('delete'); // Render 'index' view with 'medicos' data
+    res.render('crudViewUpdate'); // Render 'index' view with 'medicos' data
 
 });
 

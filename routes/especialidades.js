@@ -3,66 +3,129 @@ var express = require('express'),
     especialidade = require('../models/especialidade.js');
 
 
+
 router.get('/', function(req, res) {
     especialidade.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.render('especialidades', { especialidades: data }); // Render 'index' view with 'especialidades' data
+        res.render('crudEspecialidadesRead', { especialidades: data }); // Render 'index' view with 'especialidades' data
         //res.send(data);
     });
 });
 
-router.get('/:id', function(req, res) {
-    var id = req.params.id;
-    especialidade.findById(id, function (err, data) {
+router.get('/create', function(req, res) {
+
+    res.render('crudEspecialidadesCreate'); // Render 'index' view with 'medicos' data
+
+});
+
+
+router.get('/update', function(req, res) {
+    especialidade.find({}, function (err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.render('crudEspecialidadesUpdate', { especialidades: data });
+    });
+});
+
+router.get('/delete', function(req, res) {
+    especialidade.find({}, function (err, data) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        res.render('crudEspecialidadesDelete', { especialidades: data }); // Pass 'especialidades' data to the 'especialidades_delete' view
     });
 });
 
 
-router.post("/", function(req, res) {
-    var obj = req.body;
-    var model = new especialidade(obj);
-    model.save(function(err) {
-        if (err) {
-            res.send("error");
-            return;
-        }
-        res.send("criado com sucesso");
-    })
-})
 
 
-router.post("/:id", function(req, res) {
+
+
+
+
+
+
+
+
+
+
+
+router.get('/:id', function(req, res) {
     var id = req.params.id;
+    especialidade.findOne({"especialidades.id_especialidade": id}, {'especialidades.$': 1}, function (err, data) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        res.render('crudEspecialidadesReadId', { especialidade: data.especialidades[0] });
+    });
+});
+
+
+
+
+router.post("/create", function(req, res) {
+    var obj = req.body;
+    especialidade.findOneAndUpdate({}, { $push: { "especialidades": obj } }, { new: true, upsert: true }, function(err, data) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        res.send(`
+            <script>
+                alert("criado com sucesso");
+                window.location.href = '/especialidades';
+            </script>
+        `);
+    });
+});
+
+
+
+
+router.post("/update", function(req, res) {
+    var id_especialidade = req.body.id_especialidade;
     var obj = req.body;
 
-    especialidade.findByIdAndUpdate(id, obj, function(err) {
+    especialidade.findOneAndUpdate({"especialidades.id_especialidade": id_especialidade}, { $set: { "especialidades.$": obj } }, function(err, doc) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send("actualizado com sucesso");
+        res.send(`
+            <script>
+                alert("atualizado com sucesso");
+                window.location.href = '/especialidades';
+            </script>
+        `);
     })
-})
+});
 
 
-router.delete("/:id", function(req, res) {
-    var id = req.params.id;
 
-    especialidade.findByIdAndRemove(id, function(err, data) {
+router.post("/delete", function(req, res) {
+    var id_especialidade = req.body.id_especialidade;
+
+    especialidade.findOneAndUpdate({"especialidades.id_especialidade": id_especialidade}, { $pull: { "especialidades": { id_especialidade: id_especialidade } } }, function(err, data) {
         if (err) {
             res.send("error");
             return;
         }
-        res.send(data);
+        res.send(`
+            <script>
+                alert("apagado com sucesso");
+                window.location.href = '/especialidades';
+            </script>
+        `);
     })
-})
+});
+
+
 
 module.exports = router;

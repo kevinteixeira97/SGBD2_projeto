@@ -4,9 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
+
+
+
 var connection = require("./config/db"); //mongodb connection
 
-//var pessoasRouter = require('./routes/pessoas');
 var medicosRouter = require('./routes/medicos');
 var utentesRouter = require('./routes/utentes');
 var especialidadesRouter = require('./routes/especialidades');
@@ -14,6 +18,8 @@ var readRouter = require('./routes/read');
 var createRouter = require('./routes/create');
 var updateRouter = require('./routes/update');
 var deleteRouter = require('./routes/delete');
+var indexRouter = require('./routes/index');
+
 
 
 var app = express();
@@ -35,6 +41,8 @@ app.use('/read', readRouter);
 app.use('/create', createRouter);
 app.use('/update', updateRouter);
 app.use('/delete', deleteRouter);
+app.use('/', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,5 +59,11 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
+
+var methodOverride = require('method-override')
+app.use(methodOverride('_method'))
 
 module.exports = app;

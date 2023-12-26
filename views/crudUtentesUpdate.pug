@@ -1,0 +1,59 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Update
+            a(href="/update")
+                h1.titulo_inicial Modificar Dados / Modificar Médico
+
+        body
+            h1 Atualize um Utente
+            form(method='POST', action='/utentes/update')
+                label(for='id_utente') Utente:
+
+                select#id_utente(name='id_utente', required)
+                    each utente in utentes
+                        option(value=utente.id_utente) Nome: #{utente.nome}; Apelido: #{utente.apelido}; Idade: #{utente.idade}; Sexo: #{utente.sexo}; Localidade: #{utente.localidade}; Email: #{utente.email}; Número Utente: #{utente.numsaude};
+
+                br
+
+
+                label(for='nome') Nome:
+                input#nome(type='text', name='nome', value=nome, required)
+
+                br
+
+                label(for='apelido') Apelido:
+                input#apelido(type='text', name='apelido', value=apelido, required)
+
+                br
+
+                label(for='idade') Idade:
+                input#idade(type='number', name='idade', value=idade, required)
+
+                br
+
+                label(for='sexo') Sexo:
+                input#sexo(type='text', name='sexo', value=sexo, required)
+
+                br
+
+                label(for='localidade') Localidade:
+                input#localidade(type='text', name='localidade', value=localidade, required)
+
+                br
+
+                label(for='email') Email:
+                input#email(type='email', name='email', value=email, required)
+
+                br
+
+                label(for='numsaude') Numsaude:
+                input#numsaude(type='number', name='numsaude', value=numsaude, required)
+
+                br
+
+                input(type='submit', value='Submit')

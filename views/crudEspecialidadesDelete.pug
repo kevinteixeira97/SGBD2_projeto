@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Delete
+            a(href="/create")
+                h1.titulo_inicial Apagar Dados / Apagar Especialidade
+
+
+        body
+            h1 Especialidade
+            form(method='POST', action='/especialidades/delete')
+                label(for='id_especialidade') Especialidade:
+
+                select#id_especialidade(name='id_especialidade', required)
+                    each especialidadeDoc in especialidades
+                        each especialidade in especialidadeDoc.especialidades
+                            option(value=especialidade.id_especialidade) Nome: #{especialidade.nome}; Descrição: #{especialidade.descricao};
+
+
+                br
+                input(type='submit', value='Delete')

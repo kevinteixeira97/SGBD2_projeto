@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    doctype html
+    html
+        head
+            title All Medicos
+            a(href="/read")
+                h1.titulo_inicial Consultar Dados / Consultar Especialidades
+        body
+            h1 Detalhes de Especialidade
+            h2= 'Especialidade: ' + especialidade.nome
+            p Especialidade ID: #{especialidade.id_especialidade}
+            p Description: #{especialidade.descricao}

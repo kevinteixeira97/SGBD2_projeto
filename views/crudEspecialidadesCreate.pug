@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    doctype html
+    html
+        head
+            title Create
+            a(href="/create")
+                h1.titulo_inicial Criar Dados / Criar Especialidade
+
+        body
+            h1 Crie uma nova Especialidade
+            form(method='POST', action='/especialidades/create')
+                label(for='id_especialidade') ID Especialidade:
+                input#id_especialidade(type='number', name='id_especialidade', required)
+
+                br
+
+                label(for='nome') Nome:
+                input#nome(type='text', name='nome', required)
+
+                br
+
+                label(for='descricao') Descrição:
+                input#descricao(type='text', name='descricao', required)
+
+                br
+
+                input(type='submit', value='Submit')

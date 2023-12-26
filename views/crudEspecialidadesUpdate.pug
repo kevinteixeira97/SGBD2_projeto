@@ -1,0 +1,33 @@
+extends layout
+
+block content
+    doctype html
+    html
+        head
+            title Update
+            a(href="/update")
+                h1.titulo_inicial Modificar Dados / Modificar Especialidade
+
+        body
+            h1 Atualize uma Especialidade
+            form(method='POST', action='/especialidades/update')
+                label(for='id_especialidade') Especialidade:
+
+                select#id_especialidade(name='id_especialidade', required)
+                    each especialidadeDoc in especialidades
+                        each especialidade in especialidadeDoc.especialidades
+                            option(value=especialidade.id_especialidade) Nome: #{especialidade.nome}; Descrição: #{especialidade.descricao};
+
+                br
+
+                label(for='nome') Nome:
+                input#nome(type='text', name='nome', required)
+
+                br
+
+                label(for='descricao') Descrição:
+                input#descricao(type='text', name='descricao', required)
+
+                br
+
+                input(type='submit', value='Submit')

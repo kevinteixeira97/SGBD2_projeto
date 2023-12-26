@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title Delete
+            a(href="/delete")
+                h1.titulo_inicial Apagar Dados / Apagar Utente
+
+        body
+            h1 Delete an Utente
+            form(method='POST', action='/utentes/delete')
+                label(for='id_utente') Utente:
+
+                select#id_utente(name='id_utente', required)
+                    each utente in utentes
+                        option(value=utente.id_utente) Nome: #{utente.nome}; Apelido: #{utente.apelido}; Idade: #{utente.idade}; Sexo: #{utente.sexo}; Localidade: #{utente.localidade}; Email: #{utente.email}; Numsaude: #{utente.numsaude};
+
+                br
+
+                input(type='submit', value='Delete')

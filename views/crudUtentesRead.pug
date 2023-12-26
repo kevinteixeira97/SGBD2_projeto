@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    doctype html
+    html
+        head
+            title All Utentes
+            a(href="/read")
+                h1.titulo_inicial Consultar Dados / Consultar Utente
+
+        body
+            h1 Todos os Utentes
+            each utente in utentes
+                h2
+                    a(href='/utentes/' + utente.id_utente) #{utente.nome} #{utente.apelido}
+                p Utente ID: #{utente.id_utente}
+                p Age: #{utente.idade}
+                p Sex: #{utente.sexo}
+                p Location: #{utente.localidade}
+                p Email: #{utente.email}
+                p Health ID: #{utente.numsaude}
+                hr
