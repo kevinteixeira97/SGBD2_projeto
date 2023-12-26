@@ -6,7 +6,7 @@ var mongoose = require("mongoose"),
 
 var medicoSchema = new Schema({
     _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
-    id_medico: { type: Number, required: true },
+    id_medico: { type: Number, required: true},
     nome: { type: String, required: true},
     apelido: { type: String, required: true},
     idade: { type: Number, required: true},

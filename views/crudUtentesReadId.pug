@@ -1,18 +1,20 @@
 extends layout
 
 block content
-
     doctype html
     html
         head
-            title Detalhes do Médico
+            title All Utentes
+            a(href="/read")
+                h1.titulo_inicial Consultar Dados / Consultar Utentes
         body
-            h1 Detalhes do Médico
-            h2= utente.nome + ' ' + utente.apelido
-            p ID: #{utente._id}
+            h1 Detalhes de Utente
+            h2= 'Utente: ' + utente.nome
             p Utente ID: #{utente.id_utente}
-            p Age: #{utente.idade}
-            p Sex: #{utente.sexo}
-            p Location: #{utente.localidade}
+            p Nome: #{utente.nome}
+            p Apelido: #{utente.apelido}
+            p Idade: #{utente.idade}
+            p Sexo: #{utente.sexo}
+            p Localidade: #{utente.localidade}
             p Email: #{utente.email}
-            p Health ID: #{utente.especialidade_id}
+            p Numsaude: #{utente.numsaude}

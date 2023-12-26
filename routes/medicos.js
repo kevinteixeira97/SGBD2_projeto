@@ -30,44 +30,9 @@ router.get('/', function(req, res) {
     });
 });
 
-
-router.get('/:id_medico', function(req, res) {
-    var id_medico = req.params.id_medico; // Using id_medico as parameter
-    medico.findOne({ id_medico: id_medico }, async function (err, medicoData) {
-        if (err) {
-            res.send("error");
-            return;
-        }
-        await especialidadeModel.findOne({ "especialidades.id_especialidade": medicoData.especialidade_id }, function(err, especialidadeData) {
-            if (err) {
-                res.send("error");
-                return;
-            }
-            var especialidade = especialidadeData.especialidades.find(e => e.id_especialidade === medicoData.especialidade_id);
-            medicoData.especialidade_nome = especialidade.nome;
-            medicoData.especialidade_descricao = especialidade.descricao;
-        });
-        res.render('crudMedicosReadId', { medico: medicoData }); // Render 'medicos_id' view with the selected medico's data
-    });
-});
-
-/*
-router.get('/:id_medico', function(req, res) {
-    var id_medico = req.params.id_medico; // Usando id_medico como parâmetro
-    medico.findOne({ id_medico: id_medico }, function (err, data) {
-        if (err) {
-            res.send("error");
-            return;
-        }
-        res.render('crudMedicosReadId', { medico: data }); // Renderiza a pagina 'medicos_id' view com os dados do médico selecionado
-    });
-});
-*/
-
 router.get('/create', function(req, res) {
 
     res.render('crudMedicosCreate'); // Render 'index' view with 'medicos' data
-    console.log
 });
 
 router.get('/update', function(req, res) {
@@ -87,6 +52,26 @@ router.get('/delete', function(req, res) {
             return;
         }
         res.render('crudMedicosDelete', { medicos: data }); // Pass 'utentes' data to the 'utentes_update' view
+    });
+});
+
+router.get('/:id_medico', function(req, res) {
+    var id_medico = req.params.id_medico; // Using id_medico as parameter
+    medico.findOne({ id_medico: id_medico }, async function (err, medicoData) {
+        if (err) {
+            res.send("error");
+            return;
+        }
+        await especialidadeModel.findOne({ "especialidades.id_especialidade": medicoData.especialidade_id }, function(err, especialidadeData) {
+            if (err) {
+                res.send("error");
+                return;
+            }
+            var especialidade = especialidadeData.especialidades.find(e => e.id_especialidade === medicoData.especialidade_id);
+            medicoData.especialidade_nome = especialidade.nome;
+            medicoData.especialidade_descricao = especialidade.descricao;
+        });
+        res.render('crudMedicosReadId', { medico: medicoData }); // Render 'medicos_id' view with the selected medico's data
     });
 });
 

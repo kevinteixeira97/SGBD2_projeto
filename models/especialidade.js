@@ -9,7 +9,7 @@ var mongoose = require("mongoose"),
 const especialidadeSchema = new Schema({
     _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
     especialidades: [{
-        id_especialidade: { type: Number, required: true },
+        id_especialidade: { type: Number, required: true, unique: true },
         nome: { type: String, required: true },
         descricao: { type: String, required: true }
     }]

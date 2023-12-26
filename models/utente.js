@@ -6,7 +6,7 @@ var mongoose = require("mongoose"),
 
 var utenteSchema = new Schema({
     _id: { type: objectId, auto: true },
-    id_utente: { type: Number, required: true },
+    id_utente: { type: Number, required: true},
     nome: { type: String, required: true},
     apelido: { type: String, required: true},
     idade: { type: Number, required: true},

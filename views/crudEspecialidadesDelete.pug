@@ -18,7 +18,7 @@ block content
                 select#id_especialidade(name='id_especialidade', required)
                     each especialidadeDoc in especialidades
                         each especialidade in especialidadeDoc.especialidades
-                            option(value=especialidade.id_especialidade) Nome: #{especialidade.nome}; Descrição: #{especialidade.descricao};
+                            option(value=especialidade.id_especialidade) Id: #{especialidade.id_especialidade}; Nome: #{especialidade.nome}; Descrição: #{especialidade.descricao};
 
 
                 br
